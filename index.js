@@ -12,7 +12,7 @@ var server = http.createServer(function (request, response) {
     };
 
     if (info.platform === 'linux') {
-        info.df = child_process.execSync('df -h').toString('utf-8');
+        info.df = child_process.execSync('df -h', { encoding: 'utf-8' });
     }
 
     response.end(['<pre>', JSON.stringify(info, null, 4), '</pre>'].join(''));
